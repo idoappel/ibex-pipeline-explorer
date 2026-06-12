@@ -540,7 +540,9 @@ signal values</i> recorded from the simulation at every cycle.</p>
     <text class="val" id="v_instr" x="45" y="290">—</text>
     <text class="lbl" x="45" y="306">valid? <tspan class="val" id="v_ivalid">—</tspan></text>
    </g>
-   <path class="wire" d="M230 250 L285 250"/>
+   <path class="wire" d="M132 208 L132 228"/>
+   <path class="wire" d="M230 268 C 262 268, 256 166, 290 166"/>
+   <text class="sub" x="234" y="222">instruction</text>
 
    <g class="blkg" data-info="decoder">
     <rect class="blk" x="290" y="130" width="180" height="72"/>
@@ -584,9 +586,15 @@ signal values</i> recorded from the simulation at every cycle.</p>
     <text class="lbl" x="525" y="386">read back: <tspan class="val" id="v_drdata">—</tspan></text>
     <text class="lbl" x="525" y="402">read arrived? <tspan class="val" id="v_drvalid">—</tspan></text>
    </g>
+   <path class="wire" d="M470 166 C 495 166, 492 172, 515 176"/>
+   <text class="sub" x="473" y="158">command</text>
    <path class="wire" d="M470 272 L515 200"/>
+   <text class="sub" x="473" y="282">values</text>
    <path class="wire" d="M470 290 L515 330"/>
    <path class="wire" d="M680 205 L735 205"/>
+   <text class="sub" x="683" y="198">result</text>
+   <path class="wire" d="M680 330 C 708 330, 712 248, 738 245"/>
+   <text class="sub" x="686" y="324">loaded data</text>
 
    <g class="blkg" data-info="wb">
     <rect class="blk" x="740" y="130" width="205" height="130"/>
@@ -598,8 +606,8 @@ signal values</i> recorded from the simulation at every cycle.</p>
     <text class="lbl" x="750" y="232">value being saved:</text>
     <text class="val" id="v_wdata" x="750" y="246" style="font-size:12px">—</text>
    </g>
-   <path class="wire" d="M740 250 C 560 470, 480 430, 472 330"/>
-   <text class="sub" x="500" y="460">result loops back into a register slot</text>
+   <path class="wire" d="M790 260 C 790 472, 420 474, 378 326"/>
+   <text class="sub" x="560" y="474">result loops back into a register slot</text>
   </svg>
   <div id="card">
    <div id="cardhead"><b id="cardtitle"></b>
