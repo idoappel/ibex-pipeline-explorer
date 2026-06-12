@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ibex Pipeline Explorer — watch your C program run through silicon</title>
+<style>
+ body{font-family:'Segoe UI',Arial,sans-serif;margin:0;background:#f4f5f7;color:#222}
+ header{background:#1d3557;color:#fff;padding:34px 20px;text-align:center}
+ header h1{margin:0;font-size:28px}
+ header p{color:#cfd8ea;font-size:15px;max-width:720px;margin:10px auto 0;line-height:1.5}
+ main{max-width:860px;margin:24px auto;padding:0 16px}
+ .demo{display:block;background:#fff;border:1px solid #ddd;border-radius:10px;
+   padding:16px 20px;margin:14px 0;text-decoration:none;color:#222;
+   transition:box-shadow .15s,border-color .15s}
+ .demo:hover{border-color:#1d6ed8;box-shadow:0 4px 18px rgba(29,110,216,.18)}
+ .demo b{color:#1d3557;font-size:17px}
+ .demo span{display:block;color:#666;font-size:13.5px;margin-top:4px;line-height:1.5}
+ .tag{display:inline-block;background:#eaf3ff;color:#1d6ed8;border-radius:10px;
+   padding:1px 10px;font-size:11px;margin-left:8px;vertical-align:2px}
+ .links{text-align:center;margin:22px 0;font-size:14px}
+ .links a{color:#1d6ed8;margin:0 12px}
+ footer{text-align:center;color:#999;font-size:12px;margin:30px 0 20px;line-height:1.6}
+ footer a{color:#888}
+</style></head><body>
+<header>
+ <h1>Ibex Pipeline Explorer</h1>
+ <p>The instruction trace, the simulation waveform and the architecture diagram of a
+ RISC-V core — merged into one interactive page that narrates, in plain English,
+ what the chip is doing on every clock cycle. Self-verified against the waveform on
+ every run.</p>
+</header>
+<main>
+ <a class="demo" href="add_test.html#i=136&c=283"><b>add_test</b><span class="tag">start here</span>
+  <span>The minimal walkthrough: one <code>c.add</code> travels FETCH → EXECUTE → SAVE.
+  Watch the ALU compute 10 + 20 = 30 on the real wires, then click the Decoder to see
+  the instruction's bits sliced apart.</span></a>
+ <a class="demo" href="hello_test.html#i=466&c=2700"><b>hello_test</b><span class="tag">the showcase</span>
+  <span>Timer interrupts hijack the pipeline (six red stripes on the minimap), the core
+  sleeps in <code>wfi</code> with its clock gated off, and the console output types
+  itself as you press play.</span></a>
+ <a class="demo" href="fib_test.html#i=289&c=516"><b>fib_test</b>
+  <span>Loop-heavy code: fibonacci and array sums. Branches, data dependencies, and real
+  load-use hazards — with the chip's own stall signals explaining every frozen cycle.</span></a>
+</main>
+<div class="links">
+ <a href="https://github.com/idoappel/ibex-pipeline-explorer">GitHub repo</a> ·
+ <a href="https://github.com/idoappel/ibex-pipeline-explorer/blob/main/GUIDE.md">Guided tour</a> ·
+ <a href="https://github.com/idoappel/ibex-pipeline-explorer/blob/main/HOW-IT-WORKS.md">How it works</a>
+</div>
+<footer>
+ Built on <a href="https://github.com/lowRISC/ibex">lowRISC Ibex</a> (Apache-2.0) ·
+ generated pages are fully self-contained and work offline<br>
+ Built with Claude Code as an exercise in agentic AI for silicon engineering
+</footer>
+</body></html>

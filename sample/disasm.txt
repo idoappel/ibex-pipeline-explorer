@@ -1,0 +1,619 @@
+
+examples/sw/simple_system/add_test/add_test.elf:     file format elf32-littleriscv
+
+
+Disassembly of section .vectors:
+
+00100000 <_vectors_start>:
+_vectors_start():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:94
+  100000:	33e0006f          	j	10033e <default_exc_handler>
+  100004:	33a0006f          	j	10033e <default_exc_handler>
+  100008:	3360006f          	j	10033e <default_exc_handler>
+  10000c:	3320006f          	j	10033e <default_exc_handler>
+  100010:	32e0006f          	j	10033e <default_exc_handler>
+  100014:	32a0006f          	j	10033e <default_exc_handler>
+  100018:	3260006f          	j	10033e <default_exc_handler>
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:95
+  10001c:	3260006f          	j	100342 <timer_handler>
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:98
+  100020:	31e0006f          	j	10033e <default_exc_handler>
+  100024:	31a0006f          	j	10033e <default_exc_handler>
+  100028:	3160006f          	j	10033e <default_exc_handler>
+  10002c:	3120006f          	j	10033e <default_exc_handler>
+  100030:	30e0006f          	j	10033e <default_exc_handler>
+  100034:	30a0006f          	j	10033e <default_exc_handler>
+  100038:	3060006f          	j	10033e <default_exc_handler>
+  10003c:	3020006f          	j	10033e <default_exc_handler>
+  100040:	2fe0006f          	j	10033e <default_exc_handler>
+  100044:	2fa0006f          	j	10033e <default_exc_handler>
+  100048:	2f60006f          	j	10033e <default_exc_handler>
+  10004c:	2f20006f          	j	10033e <default_exc_handler>
+  100050:	2ee0006f          	j	10033e <default_exc_handler>
+  100054:	2ea0006f          	j	10033e <default_exc_handler>
+  100058:	2e60006f          	j	10033e <default_exc_handler>
+  10005c:	2e20006f          	j	10033e <default_exc_handler>
+  100060:	2de0006f          	j	10033e <default_exc_handler>
+  100064:	2da0006f          	j	10033e <default_exc_handler>
+  100068:	2d60006f          	j	10033e <default_exc_handler>
+  10006c:	2d20006f          	j	10033e <default_exc_handler>
+  100070:	2ce0006f          	j	10033e <default_exc_handler>
+  100074:	2ca0006f          	j	10033e <default_exc_handler>
+  100078:	2c60006f          	j	10033e <default_exc_handler>
+  10007c:	0000                	unimp
+  10007e:	0000                	unimp
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:102
+  100080:	2c60006f          	j	100346 <reset_handler>
+
+Disassembly of section .text:
+
+00100084 <putchar>:
+putchar():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  100084:	0ff57793          	andi	a5,a0,255
+  100088:	00020737          	lui	a4,0x20
+  10008c:	c31c                	sw	a5,0(a4)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:11
+  10008e:	8082                	ret
+
+00100090 <puts>:
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  100090:	00020737          	lui	a4,0x20
+puts():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:14
+  100094:	00054783          	lbu	a5,0(a0)
+  100098:	e399                	bnez	a5,10009e <puts+0xe>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:19
+  10009a:	4501                	li	a0,0
+  10009c:	8082                	ret
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:15
+  10009e:	0505                	addi	a0,a0,1
+putchar():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  1000a0:	c31c                	sw	a5,0(a4)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:10
+  1000a2:	bfcd                	j	100094 <puts+0x4>
+
+001000a4 <puthex>:
+puthex():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:21
+  1000a4:	4721                	li	a4,8
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:28
+  1000a6:	4625                	li	a2,9
+putchar():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  1000a8:	000206b7          	lui	a3,0x20
+puthex():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:26
+  1000ac:	01c55793          	srli	a5,a0,0x1c
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:28
+  1000b0:	00f66963          	bltu	a2,a5,1000c2 <puthex+0x1e>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:29
+  1000b4:	03078793          	addi	a5,a5,48
+putchar():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  1000b8:	c29c                	sw	a5,0(a3)
+puthex():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:25
+  1000ba:	177d                	addi	a4,a4,-1
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:33
+  1000bc:	0512                	slli	a0,a0,0x4
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:25
+  1000be:	f77d                	bnez	a4,1000ac <puthex+0x8>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:35
+  1000c0:	8082                	ret
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:31
+  1000c2:	03778793          	addi	a5,a5,55
+  1000c6:	bfcd                	j	1000b8 <puthex+0x14>
+
+001000c8 <sim_halt>:
+sim_halt():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:37
+  1000c8:	000207b7          	lui	a5,0x20
+  1000cc:	4705                	li	a4,1
+  1000ce:	c798                	sw	a4,8(a5)
+  1000d0:	8082                	ret
+
+001000d2 <pcount_reset>:
+pcount_reset():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:40
+  1000d2:	b0201073          	csrw	minstret,zero
+  1000d6:	b0001073          	csrw	mcycle,zero
+  1000da:	b0301073          	csrw	mhpmcounter3,zero
+  1000de:	b0401073          	csrw	mhpmcounter4,zero
+  1000e2:	b0501073          	csrw	mhpmcounter5,zero
+  1000e6:	b0601073          	csrw	mhpmcounter6,zero
+  1000ea:	b0701073          	csrw	mhpmcounter7,zero
+  1000ee:	b0801073          	csrw	mhpmcounter8,zero
+  1000f2:	b0901073          	csrw	mhpmcounter9,zero
+  1000f6:	b0a01073          	csrw	mhpmcounter10,zero
+  1000fa:	b0b01073          	csrw	mhpmcounter11,zero
+  1000fe:	b0c01073          	csrw	mhpmcounter12,zero
+  100102:	b0d01073          	csrw	mhpmcounter13,zero
+  100106:	b0e01073          	csrw	mhpmcounter14,zero
+  10010a:	b0f01073          	csrw	mhpmcounter15,zero
+  10010e:	b1001073          	csrw	mhpmcounter16,zero
+  100112:	b1101073          	csrw	mhpmcounter17,zero
+  100116:	b1201073          	csrw	mhpmcounter18,zero
+  10011a:	b1301073          	csrw	mhpmcounter19,zero
+  10011e:	b1401073          	csrw	mhpmcounter20,zero
+  100122:	b1501073          	csrw	mhpmcounter21,zero
+  100126:	b1601073          	csrw	mhpmcounter22,zero
+  10012a:	b1701073          	csrw	mhpmcounter23,zero
+  10012e:	b1801073          	csrw	mhpmcounter24,zero
+  100132:	b1901073          	csrw	mhpmcounter25,zero
+  100136:	b1a01073          	csrw	mhpmcounter26,zero
+  10013a:	b1b01073          	csrw	mhpmcounter27,zero
+  10013e:	b1c01073          	csrw	mhpmcounter28,zero
+  100142:	b1d01073          	csrw	mhpmcounter29,zero
+  100146:	b1e01073          	csrw	mhpmcounter30,zero
+  10014a:	b1f01073          	csrw	mhpmcounter31,zero
+  10014e:	b8201073          	csrw	minstreth,zero
+  100152:	b8001073          	csrw	mcycleh,zero
+  100156:	b8301073          	csrw	mhpmcounter3h,zero
+  10015a:	b8401073          	csrw	mhpmcounter4h,zero
+  10015e:	b8501073          	csrw	mhpmcounter5h,zero
+  100162:	b8601073          	csrw	mhpmcounter6h,zero
+  100166:	b8701073          	csrw	mhpmcounter7h,zero
+  10016a:	b8801073          	csrw	mhpmcounter8h,zero
+  10016e:	b8901073          	csrw	mhpmcounter9h,zero
+  100172:	b8a01073          	csrw	mhpmcounter10h,zero
+  100176:	b8b01073          	csrw	mhpmcounter11h,zero
+  10017a:	b8c01073          	csrw	mhpmcounter12h,zero
+  10017e:	b8d01073          	csrw	mhpmcounter13h,zero
+  100182:	b8e01073          	csrw	mhpmcounter14h,zero
+  100186:	b8f01073          	csrw	mhpmcounter15h,zero
+  10018a:	b9001073          	csrw	mhpmcounter16h,zero
+  10018e:	b9101073          	csrw	mhpmcounter17h,zero
+  100192:	b9201073          	csrw	mhpmcounter18h,zero
+  100196:	b9301073          	csrw	mhpmcounter19h,zero
+  10019a:	b9401073          	csrw	mhpmcounter20h,zero
+  10019e:	b9501073          	csrw	mhpmcounter21h,zero
+  1001a2:	b9601073          	csrw	mhpmcounter22h,zero
+  1001a6:	b9701073          	csrw	mhpmcounter23h,zero
+  1001aa:	b9801073          	csrw	mhpmcounter24h,zero
+  1001ae:	b9901073          	csrw	mhpmcounter25h,zero
+  1001b2:	b9a01073          	csrw	mhpmcounter26h,zero
+  1001b6:	b9b01073          	csrw	mhpmcounter27h,zero
+  1001ba:	b9c01073          	csrw	mhpmcounter28h,zero
+  1001be:	b9d01073          	csrw	mhpmcounter29h,zero
+  1001c2:	b9e01073          	csrw	mhpmcounter30h,zero
+  1001c6:	b9f01073          	csrw	mhpmcounter31h,zero
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:103
+  1001ca:	8082                	ret
+
+001001cc <get_mepc>:
+get_mepc():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:107
+  1001cc:	34102573          	csrr	a0,mepc
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:109
+  1001d0:	8082                	ret
+
+001001d2 <get_mcause>:
+get_mcause():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:113
+  1001d2:	34202573          	csrr	a0,mcause
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:115
+  1001d6:	8082                	ret
+
+001001d8 <get_mtval>:
+get_mtval():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:119
+  1001d8:	34302573          	csrr	a0,mtval
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:121
+  1001dc:	8082                	ret
+
+001001de <simple_exc_handler>:
+simple_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:123
+  1001de:	1141                	addi	sp,sp,-16
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:124
+  1001e0:	00000517          	auipc	a0,0x0
+  1001e4:	24c50513          	addi	a0,a0,588 # 10042c <main+0x66>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:123
+  1001e8:	c606                	sw	ra,12(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:124
+  1001ea:	355d                	jal	100090 <puts>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:125
+  1001ec:	00000517          	auipc	a0,0x0
+  1001f0:	25050513          	addi	a0,a0,592 # 10043c <main+0x76>
+  1001f4:	3d71                	jal	100090 <puts>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:126
+  1001f6:	00000517          	auipc	a0,0x0
+  1001fa:	25650513          	addi	a0,a0,598 # 10044c <main+0x86>
+  1001fe:	3d49                	jal	100090 <puts>
+get_mepc():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:107
+  100200:	34102573          	csrr	a0,mepc
+simple_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:127
+  100204:	3545                	jal	1000a4 <puthex>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:128
+  100206:	00000517          	auipc	a0,0x0
+  10020a:	25250513          	addi	a0,a0,594 # 100458 <main+0x92>
+  10020e:	3549                	jal	100090 <puts>
+get_mcause():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:113
+  100210:	34202573          	csrr	a0,mcause
+simple_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:129
+  100214:	3d41                	jal	1000a4 <puthex>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:130
+  100216:	00000517          	auipc	a0,0x0
+  10021a:	24e50513          	addi	a0,a0,590 # 100464 <main+0x9e>
+  10021e:	3d8d                	jal	100090 <puts>
+get_mtval():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:119
+  100220:	34302573          	csrr	a0,mtval
+simple_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:131
+  100224:	3541                	jal	1000a4 <puthex>
+putchar():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:8
+  100226:	000207b7          	lui	a5,0x20
+  10022a:	4729                	li	a4,10
+  10022c:	c398                	sw	a4,0(a5)
+sim_halt():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:37
+  10022e:	4705                	li	a4,1
+  100230:	c798                	sw	a4,8(a5)
+simple_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:135 (discriminator 1)
+  100232:	a001                	j	100232 <simple_exc_handler+0x54>
+
+00100234 <timer_disable>:
+timer_disable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:158
+  100234:	08000793          	li	a5,128
+  100238:	3047b073          	csrc	mie,a5
+  10023c:	8082                	ret
+
+0010023e <timer_read>:
+timer_read():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:165
+  10023e:	000307b7          	lui	a5,0x30
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:165 (discriminator 1)
+  100242:	43d8                	lw	a4,4(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:166 (discriminator 1)
+  100244:	4388                	lw	a0,0(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:167 (discriminator 1)
+  100246:	43cc                	lw	a1,4(a5)
+  100248:	fee59de3          	bne	a1,a4,100242 <timer_read+0x4>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:170
+  10024c:	8082                	ret
+
+0010024e <timecmp_update>:
+timecmp_update():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:173
+  10024e:	000307b7          	lui	a5,0x30
+  100252:	577d                	li	a4,-1
+  100254:	c798                	sw	a4,8(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:174
+  100256:	c7cc                	sw	a1,12(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:175
+  100258:	c788                	sw	a0,8(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:176
+  10025a:	8082                	ret
+
+0010025c <timer_enable>:
+timer_enable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:147
+  10025c:	1141                	addi	sp,sp,-16
+  10025e:	c606                	sw	ra,12(sp)
+  100260:	c422                	sw	s0,8(sp)
+  100262:	c226                	sw	s1,4(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:148
+  100264:	4681                	li	a3,0
+  100266:	00000797          	auipc	a5,0x0
+  10026a:	23a78793          	addi	a5,a5,570 # 1004a0 <time_elapsed>
+  10026e:	c394                	sw	a3,0(a5)
+  100270:	4701                	li	a4,0
+  100272:	c3d8                	sw	a4,4(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:149
+  100274:	00000797          	auipc	a5,0x0
+  100278:	22478793          	addi	a5,a5,548 # 100498 <time_increment>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:147
+  10027c:	842a                	mv	s0,a0
+  10027e:	84ae                	mv	s1,a1
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:149
+  100280:	c388                	sw	a0,0(a5)
+  100282:	c3cc                	sw	a1,4(a5)
+increment_timecmp():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:142
+  100284:	3f6d                	jal	10023e <timer_read>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:143
+  100286:	9522                	add	a0,a0,s0
+  100288:	00853433          	sltu	s0,a0,s0
+  10028c:	95a6                	add	a1,a1,s1
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:144
+  10028e:	95a2                	add	a1,a1,s0
+  100290:	3f7d                	jal	10024e <timecmp_update>
+timer_enable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:153
+  100292:	08000793          	li	a5,128
+  100296:	3047a073          	csrs	mie,a5
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:155
+  10029a:	47a1                	li	a5,8
+  10029c:	3007a073          	csrs	mstatus,a5
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:156
+  1002a0:	40b2                	lw	ra,12(sp)
+  1002a2:	4422                	lw	s0,8(sp)
+  1002a4:	4492                	lw	s1,4(sp)
+  1002a6:	0141                	addi	sp,sp,16
+  1002a8:	8082                	ret
+
+001002aa <get_elapsed_time>:
+get_elapsed_time():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:178
+  1002aa:	00000797          	auipc	a5,0x0
+  1002ae:	1f678793          	addi	a5,a5,502 # 1004a0 <time_elapsed>
+  1002b2:	4388                	lw	a0,0(a5)
+  1002b4:	43cc                	lw	a1,4(a5)
+  1002b6:	8082                	ret
+
+001002b8 <simple_timer_handler>:
+simple_timer_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:182
+  1002b8:	715d                	addi	sp,sp,-80
+  1002ba:	d03e                	sw	a5,32(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:183
+  1002bc:	00000797          	auipc	a5,0x0
+  1002c0:	1dc78793          	addi	a5,a5,476 # 100498 <time_increment>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:182
+  1002c4:	de22                	sw	s0,60(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:183
+  1002c6:	4380                	lw	s0,0(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:182
+  1002c8:	dc26                	sw	s1,56(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:183
+  1002ca:	43c4                	lw	s1,4(a5)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:182
+  1002cc:	d632                	sw	a2,44(sp)
+  1002ce:	c686                	sw	ra,76(sp)
+  1002d0:	c496                	sw	t0,72(sp)
+  1002d2:	c29a                	sw	t1,68(sp)
+  1002d4:	c09e                	sw	t2,64(sp)
+  1002d6:	d436                	sw	a3,40(sp)
+  1002d8:	d23a                	sw	a4,36(sp)
+  1002da:	ce42                	sw	a6,28(sp)
+  1002dc:	cc46                	sw	a7,24(sp)
+  1002de:	ca72                	sw	t3,20(sp)
+  1002e0:	c876                	sw	t4,16(sp)
+  1002e2:	c67a                	sw	t5,12(sp)
+  1002e4:	c47e                	sw	t6,8(sp)
+  1002e6:	da2a                	sw	a0,52(sp)
+  1002e8:	d82e                	sw	a1,48(sp)
+increment_timecmp():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:142
+  1002ea:	3f91                	jal	10023e <timer_read>
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:143
+  1002ec:	9522                	add	a0,a0,s0
+  1002ee:	00853433          	sltu	s0,a0,s0
+  1002f2:	95a6                	add	a1,a1,s1
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:144
+  1002f4:	95a2                	add	a1,a1,s0
+  1002f6:	3fa1                	jal	10024e <timecmp_update>
+simple_timer_handler():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:184
+  1002f8:	00000597          	auipc	a1,0x0
+  1002fc:	1a858593          	addi	a1,a1,424 # 1004a0 <time_elapsed>
+  100300:	4180                	lw	s0,0(a1)
+  100302:	41c4                	lw	s1,4(a1)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:185
+  100304:	40b6                	lw	ra,76(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:184
+  100306:	00140513          	addi	a0,s0,1
+  10030a:	00853633          	sltu	a2,a0,s0
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:185
+  10030e:	5472                	lw	s0,60(sp)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:184
+  100310:	009607b3          	add	a5,a2,s1
+  100314:	c188                	sw	a0,0(a1)
+  100316:	c1dc                	sw	a5,4(a1)
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.c:185
+  100318:	42a6                	lw	t0,72(sp)
+  10031a:	4316                	lw	t1,68(sp)
+  10031c:	4386                	lw	t2,64(sp)
+  10031e:	54e2                	lw	s1,56(sp)
+  100320:	5552                	lw	a0,52(sp)
+  100322:	55c2                	lw	a1,48(sp)
+  100324:	5632                	lw	a2,44(sp)
+  100326:	56a2                	lw	a3,40(sp)
+  100328:	5712                	lw	a4,36(sp)
+  10032a:	5782                	lw	a5,32(sp)
+  10032c:	4872                	lw	a6,28(sp)
+  10032e:	48e2                	lw	a7,24(sp)
+  100330:	4e52                	lw	t3,20(sp)
+  100332:	4ec2                	lw	t4,16(sp)
+  100334:	4f32                	lw	t5,12(sp)
+  100336:	4fa2                	lw	t6,8(sp)
+  100338:	6161                	addi	sp,sp,80
+  10033a:	30200073          	mret
+
+0010033e <default_exc_handler>:
+default_exc_handler():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:10
+  10033e:	ea1ff06f          	j	1001de <simple_exc_handler>
+
+00100342 <timer_handler>:
+timer_handler():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:13
+  100342:	f77ff06f          	j	1002b8 <simple_timer_handler>
+
+00100346 <reset_handler>:
+reset_handler():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:17
+  100346:	00000093          	li	ra,0
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:18
+  10034a:	8106                	mv	sp,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:19
+  10034c:	8186                	mv	gp,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:20
+  10034e:	8206                	mv	tp,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:21
+  100350:	8286                	mv	t0,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:22
+  100352:	8306                	mv	t1,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:23
+  100354:	8386                	mv	t2,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:24
+  100356:	8406                	mv	s0,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:25
+  100358:	8486                	mv	s1,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:26
+  10035a:	8506                	mv	a0,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:27
+  10035c:	8586                	mv	a1,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:28
+  10035e:	8606                	mv	a2,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:29
+  100360:	8686                	mv	a3,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:30
+  100362:	8706                	mv	a4,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:31
+  100364:	8786                	mv	a5,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:32
+  100366:	8806                	mv	a6,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:33
+  100368:	8886                	mv	a7,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:34
+  10036a:	8906                	mv	s2,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:35
+  10036c:	8986                	mv	s3,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:36
+  10036e:	8a06                	mv	s4,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:37
+  100370:	8a86                	mv	s5,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:38
+  100372:	8b06                	mv	s6,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:39
+  100374:	8b86                	mv	s7,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:40
+  100376:	8c06                	mv	s8,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:41
+  100378:	8c86                	mv	s9,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:42
+  10037a:	8d06                	mv	s10,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:43
+  10037c:	8d86                	mv	s11,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:44
+  10037e:	8e06                	mv	t3,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:45
+  100380:	8e86                	mv	t4,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:46
+  100382:	8f06                	mv	t5,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:47
+  100384:	8f86                	mv	t6,ra
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:50
+  100386:	00038117          	auipc	sp,0x38
+  10038a:	c7a10113          	addi	sp,sp,-902 # 138000 <_stack_start>
+
+0010038e <_start>:
+_start():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:56
+  10038e:	00000d17          	auipc	s10,0x0
+  100392:	10ad0d13          	addi	s10,s10,266 # 100498 <time_increment>
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:57
+  100396:	00000d97          	auipc	s11,0x0
+  10039a:	112d8d93          	addi	s11,s11,274 # 1004a8 <_bss_end>
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:59
+  10039e:	01bd5763          	bge	s10,s11,1003ac <main_entry>
+
+001003a2 <zero_loop>:
+zero_loop():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:62
+  1003a2:	000d2023          	sw	zero,0(s10)
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:63
+  1003a6:	0d11                	addi	s10,s10,4
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:64
+  1003a8:	ffaddde3          	bge	s11,s10,1003a2 <zero_loop>
+
+001003ac <main_entry>:
+zero_loop_end():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:70
+  1003ac:	4501                	li	a0,0
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:71
+  1003ae:	4581                	li	a1,0
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:72
+  1003b0:	016000ef          	jal	ra,1003c6 <main>
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:75
+  1003b4:	000202b7          	lui	t0,0x20
+  1003b8:	02a1                	addi	t0,t0,8
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:76
+  1003ba:	4305                	li	t1,1
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:77
+  1003bc:	0062a023          	sw	t1,0(t0) # 20000 <_stack_len+0x18000>
+
+001003c0 <sleep_loop>:
+sleep_loop():
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:81
+  1003c0:	10500073          	wfi
+/home/user/ibex/examples/sw/simple_system/common/crt0.S:82
+  1003c4:	bff5                	j	1003c0 <sleep_loop>
+
+001003c6 <main>:
+main():
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:3
+  1003c6:	1101                	addi	sp,sp,-32
+  1003c8:	ce06                	sw	ra,28(sp)
+  1003ca:	cc22                	sw	s0,24(sp)
+pcount_enable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.h:60
+  1003cc:	57fd                	li	a5,-1
+  1003ce:	32079073          	csrw	mcountinhibit,a5
+main():
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:5
+  1003d2:	3301                	jal	1000d2 <pcount_reset>
+pcount_enable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.h:60
+  1003d4:	4781                	li	a5,0
+  1003d6:	32079073          	csrw	mcountinhibit,a5
+main():
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:8
+  1003da:	47a9                	li	a5,10
+  1003dc:	c43e                	sw	a5,8(sp)
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:9
+  1003de:	47d1                	li	a5,20
+  1003e0:	c63e                	sw	a5,12(sp)
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:10
+  1003e2:	4422                	lw	s0,8(sp)
+  1003e4:	47b2                	lw	a5,12(sp)
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:12
+  1003e6:	00000517          	auipc	a0,0x0
+  1003ea:	08a50513          	addi	a0,a0,138 # 100470 <main+0xaa>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:10
+  1003ee:	943e                	add	s0,s0,a5
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:12
+  1003f0:	3145                	jal	100090 <puts>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:13
+  1003f2:	00000517          	auipc	a0,0x0
+  1003f6:	08a50513          	addi	a0,a0,138 # 10047c <main+0xb6>
+  1003fa:	3959                	jal	100090 <puts>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:14
+  1003fc:	8522                	mv	a0,s0
+  1003fe:	315d                	jal	1000a4 <puthex>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:15
+  100400:	4529                	li	a0,10
+  100402:	3149                	jal	100084 <putchar>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:17
+  100404:	47f9                	li	a5,30
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:18
+  100406:	00000517          	auipc	a0,0x0
+  10040a:	08250513          	addi	a0,a0,130 # 100488 <main+0xc2>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:17
+  10040e:	00f40663          	beq	s0,a5,10041a <main+0x54>
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:20
+  100412:	00000517          	auipc	a0,0x0
+  100416:	07e50513          	addi	a0,a0,126 # 100490 <main+0xca>
+  10041a:	399d                	jal	100090 <puts>
+pcount_enable():
+/home/user/ibex/examples/sw/simple_system/common/simple_system_common.h:60
+  10041c:	57fd                	li	a5,-1
+  10041e:	32079073          	csrw	mcountinhibit,a5
+main():
+/home/user/ibex/examples/sw/simple_system/add_test/add_test.c:25
+  100422:	40f2                	lw	ra,28(sp)
+  100424:	4462                	lw	s0,24(sp)
+  100426:	4501                	li	a0,0
+  100428:	6105                	addi	sp,sp,32
+  10042a:	8082                	ret
